@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# pycharm
+.env/
+.idea/
+
+
+# sqlite3
+*.sqlite3
