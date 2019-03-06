@@ -1,5 +1,6 @@
 from django.urls import path
 from django.conf.urls import include
+from django.conf import settings
 from django.contrib import admin
 from rest_framework_swagger.views import get_swagger_view
 
@@ -13,3 +14,10 @@ urlpatterns = [
     path('api/docs/', schema_view),
     path('bookmarks/', include('bookmarks.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [
+        path('__debug__', include(debug_toolbar.urls))
+    ]
