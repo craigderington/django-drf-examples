@@ -1,11 +1,15 @@
 from django.urls import path
-from django.conf.urls import url, include
+from django.conf.urls import include
 from django.contrib import admin
+from rest_framework_swagger.views import get_swagger_view
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
+schema_view = get_swagger_view(title='Snippet API')
+
+# url list
 urlpatterns = [
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'', include('snippets.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', include('snippets.urls')),
     path('admin/', admin.site.urls),
+    path('api/docs/', schema_view),
+    path('bookmarks/', include('bookmarks.urls')),
 ]
