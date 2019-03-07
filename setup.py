@@ -54,6 +54,7 @@ setup(
         'xlrd==1.2.0',
         'xlwt==1.3.0',
         'GeoIP==1.3.2',
+        'ipaddress==1.0.22',
     ],
     package_data={},
     data_files=[],
