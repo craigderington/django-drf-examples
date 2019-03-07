@@ -5,7 +5,7 @@ from django.contrib import admin
 from rest_framework_swagger.views import get_swagger_view
 from .views import api_root
 
-schema_view = get_swagger_view(title='Snippet API')
+schema_view = get_swagger_view(title='DRF Example APIs')
 
 # url list
 urlpatterns = [

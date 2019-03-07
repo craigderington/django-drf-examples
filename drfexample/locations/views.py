@@ -2,8 +2,9 @@ from .models import Location
 from .serializers import LocationSerializer
 from rest_framework.response import Response
 from rest_framework import generics, permissions
-import GeoIP
+from rest_framework import status
 from rest_framework.decorators import api_view
+import GeoIP
 
 gi = GeoIP.open('/var/lib/geoip/GeoLiteCity.dat', GeoIP.GEOIP_INDEX_CACHE | GeoIP.GEOIP_CHECK_CACHE)
 
@@ -30,4 +31,11 @@ def get_location(request, *args, **kwargs):
     """
     ip_addr = kwargs['ip_addr']
     gi_lookup = gi.record_by_addr(ip_addr)
-    return Response(gi_lookup)
+    gi_lookup.update({'ip_addr': str(ip_addr)})
+    serializer = LocationSerializer(data=gi_lookup)
+
+    if serializer.is_valid():
+        print('Valid Serializer')
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(gi_lookup, status=status.HTTP_200_OK)
