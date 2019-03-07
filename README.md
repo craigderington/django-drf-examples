@@ -4,6 +4,8 @@
 
 Example APIs using Django 2.1.7 + Django REST Framework 3.9.2 + Swagger UI 2.2.0
 
+![django-rest-swagger](https://s3.amazonaws.com/watchunited/swagger-ui.png)
+
 This DRF repository contains several example APIs for various applications types.
 
 Data Models:
@@ -12,7 +14,7 @@ Data Models:
 2.  Code Snippets
 3.  ToDos
 4.  Bookmarks
-5.  Geolocation by IP Address
+5.  Locations
 
 
 ##### Installation
@@ -30,7 +32,11 @@ $ source .env/bin/activate
 (.env) ~drfexample$ python manage.py runserver 8888
 ```
 
+##### Usage
 
+```
+curl -i http://127.0.0.1:8888/locations/geolocate/<str:ip_addr>
+```
 
 
 
