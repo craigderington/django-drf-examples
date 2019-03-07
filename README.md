@@ -1,6 +1,6 @@
 ### Django REST Framework API by Example
 
-![django](https://www.pythonanywhere.com/user/craigderington/files/home/craigderington/newblog2/static/images/drfexample-location-list.png "Django REST Framework by Example")
+![django](https://www.pythonanywhere.com/user/craigderington/files/home/craigderington/newblog2/static/images/drfexample-location-list.png?raw=true "Django REST Framework by Example")
 
 Example APIs using Django 2.1.7 + Django REST Framework 3.9.2 + Swagger UI 2.2.0
 
