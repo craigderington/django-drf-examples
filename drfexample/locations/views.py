@@ -3,7 +3,8 @@ from .serializers import LocationSerializer
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 import GeoIP
 
 gi = GeoIP.open('/var/lib/geoip/GeoLiteCity.dat', GeoIP.GEOIP_INDEX_CACHE | GeoIP.GEOIP_CHECK_CACHE)
@@ -22,6 +23,7 @@ class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 @api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
 def get_location(request, *args, **kwargs):
     """
     Geolocate the given IP address from GeoCityLite and GeoIP

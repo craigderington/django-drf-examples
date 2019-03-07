@@ -17,6 +17,7 @@ urlpatterns = [
     path('snippets/', include('snippets.urls')),
     path('users/', include('users.urls')),
     path('locations/', include('locations.urls')),
+    path('todos/', include('todos.urls')),
 ]
 
 if settings.DEBUG:
