@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'snippets.apps.SnippetsConfig',
     'bookmarks.apps.BookmarksConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
