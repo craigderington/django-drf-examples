@@ -9,4 +9,5 @@ def api_root(request, format=None):
         'users': reverse('user-list', request=request, format=format),
         'snippets': reverse('snippet-list', request=request, format=format),
         'bookmarks': reverse('bookmark-list', request=request, format=format),
+        'locations': reverse('location-list', request=request, format=format),
     })

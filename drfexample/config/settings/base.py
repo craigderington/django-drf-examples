@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'snippets.apps.SnippetsConfig',
     'bookmarks.apps.BookmarksConfig',
     'users.apps.UsersConfig',
+    'locations.apps.LocationsConfig',
 ]
 
 MIDDLEWARE = [

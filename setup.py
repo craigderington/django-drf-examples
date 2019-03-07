@@ -53,6 +53,7 @@ setup(
         'urllib3==1.24.1',
         'xlrd==1.2.0',
         'xlwt==1.3.0',
+        'GeoIP==1.3.2',
     ],
     package_data={},
     data_files=[],

@@ -14,8 +14,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/docs/', schema_view),
     path('bookmarks/', include('bookmarks.urls')),
-    path('', include('snippets.urls')),
+    path('snippets/', include('snippets.urls')),
     path('users/', include('users.urls')),
+    path('locations/', include('locations.urls')),
 ]
 
 if settings.DEBUG:
