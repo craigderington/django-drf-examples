@@ -3,6 +3,7 @@
 
 from django.db import models
 from datetime import datetime
+import uuid
 
 
 class ToDo(models.Model):
@@ -25,6 +26,7 @@ class ToDo(models.Model):
     completed = models.BooleanField(default=False)
     completed_date = models.DateTimeField(null=True, blank=True)
     owner = models.ForeignKey('auth.User', null=False, blank=False, on_delete=models.CASCADE)
+    todo_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 
     def __repr__(self):
         if self.name and self.status:

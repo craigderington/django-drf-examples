@@ -7,7 +7,7 @@ class ToDoAdmin(admin.ModelAdmin):
     Admin class for ToDos
     """
 
-    list_display = ['name', 'status', 'completed']
+    list_display = ['name', 'status', 'completed', 'todo_uuid']
     list_filter = ['status', 'completed']
     search_fields = ['name']
 
