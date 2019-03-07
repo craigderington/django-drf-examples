@@ -30,12 +30,23 @@ def get_location(request, *args, **kwargs):
     :return: geo_location
     """
     ip_addr = kwargs['ip_addr']
-    gi_lookup = gi.record_by_addr(ip_addr)
-    gi_lookup.update({'ip_addr': str(ip_addr)})
-    serializer = LocationSerializer(data=gi_lookup)
 
-    if serializer.is_valid():
-        print('Valid Serializer')
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(gi_lookup, status=status.HTTP_200_OK)
+    try:
+        gi_lookup = gi.record_by_addr(ip_addr)
+
+        if gi_lookup:
+            gi_lookup.update({'ip_addr': str(ip_addr)})
+            serializer = LocationSerializer(data=gi_lookup)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(gi_lookup, status=status.HTTP_200_OK)
+
+        else:
+            data = {'ip_addr': str(ip_addr)}
+            return Response(data, status=status.HTTP_200_OK)
+
+    except IOError as err:
+        data = {'Error': str(err)}
+        return Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
