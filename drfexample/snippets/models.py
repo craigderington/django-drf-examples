@@ -21,7 +21,7 @@ class Snippet(models.Model):
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
     highlighted = models.TextField()
 
-    def __repr__(self):
+    def __str__(self):
         if self.code:
             return '{}'.format(str(self.code))
 

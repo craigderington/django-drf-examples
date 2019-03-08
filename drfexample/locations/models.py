@@ -22,7 +22,7 @@ class Location(models.Model):
     area_code = models.PositiveIntegerField(default=0)
     metro_code = models.PositiveIntegerField(default=0)
 
-    def __repr__(self):
+    def __str__(self):
         if self.region and self.city:
             return '{} from {} - {}'.format(
                 self.ip_addr,

@@ -5,7 +5,7 @@ from django.contrib import admin
 from rest_framework_swagger.views import get_swagger_view
 from .views import api_root
 
-schema_view = get_swagger_view(title='DRF Example APIs')
+schema_view = get_swagger_view(title='DRF by Example')
 
 # url list
 urlpatterns = [
@@ -18,6 +18,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('locations/', include('locations.urls')),
     path('todos/', include('todos.urls')),
+    path('notes/', include('notes.urls')),
 ]
 
 if settings.DEBUG:

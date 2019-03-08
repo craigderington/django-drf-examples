@@ -41,7 +41,7 @@ def get_location(request, *args, **kwargs):
             gi_lookup = gi.record_by_addr(ip_addr.exploded)
 
             if gi_lookup:
-                gi_lookup.update({'ip_addr': str(ip_addr)})
+                gi_lookup.update({'ip_addr': str(ip_addr.exploded)})
                 serializer = LocationSerializer(data=gi_lookup)
 
                 if serializer.is_valid():

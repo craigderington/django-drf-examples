@@ -28,7 +28,7 @@ class ToDo(models.Model):
     owner = models.ForeignKey('auth.User', null=False, blank=False, on_delete=models.CASCADE)
     todo_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 
-    def __repr__(self):
+    def __str__(self):
         if self.name and self.status:
             return '{}'.format(
                 self.name

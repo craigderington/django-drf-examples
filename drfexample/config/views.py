@@ -11,4 +11,5 @@ def api_root(request, format=None):
         'bookmarks': reverse('bookmark-list', request=request, format=format),
         'locations': reverse('location-list', request=request, format=format),
         'todos': reverse('todo-list', request=request, format=format),
+        'notes': reverse('note-list', request=request, format=format)
     })

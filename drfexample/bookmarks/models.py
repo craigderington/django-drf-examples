@@ -13,7 +13,7 @@ class Bookmark(models.Model):
     favorite = models.BooleanField(default=0)
     thumbnail_path = models.CharField(max_length=255, null=True, blank=True)
 
-    def __repr__(self):
+    def __str__(self):
         if self.name:
             return '{}'.format(
                 self.name
