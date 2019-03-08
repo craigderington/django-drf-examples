@@ -13,56 +13,6 @@ class NoteTag(models.Model):
             return '{}'.format(self.tag_name)
 
 
-class NoteReminder(models.Model):
-    """
-    Note reminders class
-    """
-
-    REMINDER_TYPE_CHOICES = (
-        (0, 'Email'),
-        (1, 'SMS'),
-        (2, 'Radio'),
-        (3, 'Laser'),
-    )
-
-    REMINDER_STATUSES = (
-        (0, 'Created'),
-        (1, 'Pending'),
-        (2, 'Queued'),
-        (4, 'Sent'),
-        (5, 'Bounced'),
-    )
-
-    reminder_type = models.PositiveIntegerField(choices=REMINDER_TYPE_CHOICES)
-    reminder_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
-    reminder_text = models.TextField()
-    reminder_date = models.DateTimeField
-    reminder_notification_delta = models.PositiveIntegerField(default=30)
-    reminder_notification_delta_type = models.CharField(max_length=50, default='minutes')
-    reminder_sent = models.BooleanField(default=False)
-    reminder_sent_date = models.DateTimeField()
-    reminder_status = models.PositiveIntegerField(choices=REMINDER_STATUSES)
-
-    def __str__(self):
-        if self.reminder_date and self.reminder_uuid:
-            return '{}'.format(
-                self.reminder_type,
-                self.reminder_date,
-                self.reminder_text
-            )
-
-    def save(self, *args, **kwargs):
-        super(NoteReminder, self).save(*args, **kwargs)
-
-    def get_status(self):
-        if self.reminder_status and self.reminder_sent_date:
-            return '{} on {}'.format(
-                self.reminder_status,
-                self.reminder_sent_date
-            )
-        return '{}'.format(self.reminder_status)
-
-
 class Note(models.Model):
     """
     Note model class
@@ -79,7 +29,6 @@ class Note(models.Model):
     note_color = models.CharField(max_length=20, default='#FFF')
     note_reminder = models.BooleanField(default=False)
     note_tags = models.ManyToManyField(NoteTag)
-    note_reminders = models.ForeignKey(NoteReminder, default=0, on_delete=models.CASCADE)
     owner = models.ForeignKey('auth.User', null=False, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -97,3 +46,65 @@ class Note(models.Model):
     def get_tags(self):
         if self.note_tags:
             return '{}'.format(self.note_tags)
+
+
+class NoteReminder(models.Model):
+    """
+    Note reminders class
+    """
+
+    REMINDER_TYPE_CHOICES = (
+        ('Email', 'Email'),
+        ('SMS', 'SMS'),
+        ('Radio Waves', 'Radio Waves'),
+        ('Laser Beam', 'Laser Beam'),
+    )
+
+    REMINDER_STATUSES = (
+        (0, 'Created'),
+        (1, 'Pending'),
+        (2, 'Queued'),
+        (4, 'Sent'),
+        (5, 'Bounced'),
+    )
+
+    DELTA_TYPES = (
+        ('seconds', 'seconds'),
+        ('minutes', 'minutes'),
+        ('hours', 'hours'),
+        ('days', 'days'),
+        ('weeks', 'weeks'),
+        ('months', 'months'),
+        ('years', 'years'),
+        ('decades', 'decades'),
+        ('centuries', 'centuries'),
+    )
+
+    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    reminder_type = models.CharField(max_length=50, default='Email', choices=REMINDER_TYPE_CHOICES)
+    reminder_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    reminder_text = models.TextField()
+    reminder_date = models.DateTimeField()
+    reminder_notification_delta = models.PositiveIntegerField(default=30)
+    reminder_notification_delta_type = models.CharField(max_length=50, default='minutes', choices=DELTA_TYPES)
+    reminder_sent = models.BooleanField(default=False)
+    reminder_sent_date = models.DateTimeField()
+    reminder_status = models.PositiveIntegerField(choices=REMINDER_STATUSES)
+
+    def __str__(self):
+        if self.id and self.reminder_date:
+            return '{} on {}'.format(
+                self.reminder_type,
+                self.reminder_date
+            )
+
+    def save(self, *args, **kwargs):
+        super(NoteReminder, self).save(*args, **kwargs)
+
+    def get_status(self):
+        if self.reminder_status and self.reminder_sent_date:
+            return '{} on {}'.format(
+                self.reminder_status,
+                self.reminder_sent_date
+            )
+        return '{}'.format(self.reminder_status)
