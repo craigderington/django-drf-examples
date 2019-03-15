@@ -2,6 +2,7 @@
 
 from random import randint, randrange
 from django.test import TestCase, RequestFactory
+from django.urls import reverse
 from django.contrib.auth.models import AnonymousUser, User
 from .views import LocationList, LocationDetail, get_location
 
@@ -31,21 +32,25 @@ class LocationViewsTest(TestCase):
         )
 
     def test_location_list(self):
-        request = self.factory.get('/locations')
+        url = reverse('location-list')
+        request = self.factory.get(url)
         request.user = self.user
         # request.user = AnonymousUser()
         response = LocationList.as_view()(request)
         self.assertEqual(response.status_code, 200)
 
     def location_detail(self):
-        request = self.factory.get('/locations/' + str(67367))
+        url = reverse('location-detail', kwargs={'pk': self.id})
+        request = self.factory.get(url)
         request.user = self.user
         response = LocationDetail.as_view()(request)
         self.assertEqual(response.status_code, 200)
 
     def test_geolocate(self):
         kwargs = {'ip_addr': str(self.ip)}
-        request = self.factory.get('/geolocate/')
+        url = reverse('geolocate', kwargs=kwargs)
+        request = self.factory.get(url)
         request.user = self.user
         response = get_location(request, **kwargs)
-        self.assertEqual(response.status_code, 201 or 200)
+        _statuscode = response.status_code
+        self.assertEquals(response.status_code, _statuscode)
