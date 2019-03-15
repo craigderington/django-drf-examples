@@ -30,7 +30,7 @@ SEND_BROKEN_LINK_EMAILS = True
 # CACHING
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.RedisCache',
+        'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': '/var/run/redis/redis.sock',
     },
 }
@@ -47,6 +47,11 @@ DEBUG_TOOLBAR_CONFIG = {
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
 }
+
+
+# Test Runner
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
 
 # Google Maps API Key
 GOOGLE_API_KEY = ""

@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.LocationList.as_view(), name='location-list'),
-    path('<int:pk>/', views.LocationDetail.as_view()),
+    path('<int:pk>/', views.LocationDetail.as_view(), name='location-detail'),
     path('geolocate/<str:ip_addr>', views.get_location, name='geolocate')
 ]
 
