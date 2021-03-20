@@ -34,7 +34,7 @@ setup(
         'idna==2.8',
         'itypes==1.1.0',
         'jdcal==1.4',
-        'Jinja2==2.10',
+        'Jinja2==2.11.3',
         'MarkupSafe==1.1.1',
         'odfpy==1.4.0',
         'openapi-codec==1.3.2',
