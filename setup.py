@@ -42,7 +42,7 @@ setup(
         'pkg-resources==0.0.0',
         'Pygments==2.3.1',
         'pytz==2018.9',
-        'PyYAML==3.13',
+        'PyYAML==5.4',
         'records==0.5.3',
         'requests==2.21.0',
         'simplejson==3.16.0',
