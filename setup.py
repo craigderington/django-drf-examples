@@ -26,7 +26,7 @@ setup(
         'coreapi==2.3.3',
         'coreschema==0.0.4',
         'defusedxml==0.5.0',
-        'Django==2.1.11',
+        'Django==2.2.21',
         'django-rest-swagger==2.2.0',
         'djangorestframework==3.9.2',
         'docopt==0.6.2',
