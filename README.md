@@ -1,10 +1,7 @@
 ### Django REST Framework API by Example
 
-![django-rest-framework-by-example](https://s3.amazonaws.com/watchunited/drfexample-location-list.png "Django REST Framework by Example")
 
 Example APIs using Django 2.1.7 + Django REST Framework 3.9.2 + Swagger UI 2.2.0
-
-![django-rest-swagger](https://s3.amazonaws.com/watchunited/swagger-ui.png)
 
 This DRF repository contains several example APIs for various applications types.
 
