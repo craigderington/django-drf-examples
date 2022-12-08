@@ -21,7 +21,7 @@ setup(
     keywords='django rest framework snippet bookmark api',
     packages=find_packages(exclude=['contrib', 'docs', 'test']),
     install_requires=[
-        'certifi==2018.11.29',
+        'certifi==2022.12.7',
         'chardet==3.0.4',
         'coreapi==2.3.3',
         'coreschema==0.0.4',
