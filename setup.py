@@ -40,7 +40,7 @@ setup(
         'openapi-codec==1.3.2',
         'openpyxl==2.4.11',
         'pkg-resources==0.0.0',
-        'Pygments==2.3.1',
+        'Pygments==2.7.4',
         'pytz==2018.9',
         'PyYAML==3.13',
         'records==0.5.3',
