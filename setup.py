@@ -28,7 +28,7 @@ setup(
         'defusedxml==0.5.0',
         'Django==2.1.11',
         'django-rest-swagger==2.2.0',
-        'djangorestframework==3.9.2',
+        'djangorestframework==3.11.2',
         'docopt==0.6.2',
         'et-xmlfile==1.0.1',
         'idna==2.8',
